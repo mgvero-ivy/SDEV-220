@@ -1,0 +1,24 @@
+### Get all books
+GET http://127.0.0.1:5000/books
+
+###
+
+### Add a book
+POST http://127.0.0.1:5000/books
+Content-Type: application/json
+
+{
+    "book_name": "",
+    "author": "",
+    "publisher": ""
+}
+
+###
+
+### Get book with ID 1
+GET http://127.0.0.1:5000/books/1
+
+###
+
+### Delete book with ID 1
+DELETE http://127.0.0.1:5000/books/1
