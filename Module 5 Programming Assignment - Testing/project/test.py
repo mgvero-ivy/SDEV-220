@@ -29,6 +29,11 @@ if __name__ == '__main__':
     unittest.main()
 
 '''
+The first test, test_list_int, passed successfully, telling me that the sum function does properly give the correct sum of a list of integers.   
+The second test, test_list_fraction, failed because it was expecting to return a sum of 1 however by design for this assignment the fractions in 
+data do not actually equal 1. If the data variable was changed to actually equal 1 the test would have passed.
+
+
 terminal results 
 PS C:\Users\marko\OneDrive\Desktop\School\SDEV220\Module5\project> python
 Python 3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)] on win32
