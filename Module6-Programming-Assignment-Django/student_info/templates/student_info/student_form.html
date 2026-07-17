@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+
+    <title>Student Information Form</title>
+</head>
+
+<body>
+    <h1>Student Information</h1>
+
+    <!-- Displays an error message if required information is missing -->
+    {% if error %}
+        <p style="color: red;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+    <!--
+        Sends the completed form to the student_results URL.
+        POST is used because the form is submitting user information.
+    -->
+    <form action="{% url 'student_results' %}" method="post">
+
+        <!-- Required security token for Django POST forms -->
+        {% csrf_token %}
+
+        <!-- Student Name text box -->
+        <p>
+            <label for="student_name">Student Name:</label>
+            <input
+                type="text"
+                id="student_name"
+                name="student_name"
+                value="{{ form_data.student_name }}"
+            >
+        </p>
+
+        <!-- Student ID text box -->
+        <p>
+            <label for="student_id">Student ID:</label>
+            <input
+                type="text"
+                id="student_id"
+                name="student_id"
+                value="{{ form_data.student_id }}"
+            >
+        </p>
+
+        <!-- Major drop-down list -->
+        <p>
+            <label for="major">Major:</label>
+
+            <select id="major" name="major">
+                <option value="Software Development">
+                    Software Development
+                </option>
+
+                <option value="Computer Science">
+                    Computer Science
+                </option>
+
+                <option value="Cybersecurity">
+                    Cybersecurity
+                </option>
+
+                <option value="Information Technology">
+                    Information Technology
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+            </select>
+        </p>
+
+        <!-- Class Standing radio buttons -->
+        <fieldset>
+            <legend>Class Standing:</legend>
+
+            <label>
+                <input
+                    type="radio"
+                    name="class_standing"
+                    value="Freshman"
+                >
+                Freshman
+            </label>
+
+            <br>
+
+            <label>
+                <input
+                    type="radio"
+                    name="class_standing"
+                    value="Sophomore"
+                >
+                Sophomore
+            </label>
+
+            <br>
+
+            <label>
+                <input
+                    type="radio"
+                    name="class_standing"
+                    value="Junior"
+                >
+                Junior
+            </label>
+
+            <br>
+
+            <label>
+                <input
+                    type="radio"
+                    name="class_standing"
+                    value="Senior"
+                >
+                Senior
+            </label>
+        </fieldset>
+
+        <br>
+
+        <!-- Programming language checkboxes -->
+        <fieldset>
+            <legend>Programming Languages Known:</legend>
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="languages"
+                    value="Python"
+                >
+                Python
+            </label>
+
+            <br>
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="languages"
+                    value="JavaScript"
+                >
+                JavaScript
+            </label>
+
+            <br>
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="languages"
+                    value="Java"
+                >
+                Java
+            </label>
+
+            <br>
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="languages"
+                    value="C++"
+                >
+                C++
+            </label>
+        </fieldset>
+
+        <!-- Expected Graduation Year number input -->
+        <p>
+            <label for="graduation_year">
+                Expected Graduation Year:
+            </label>
+
+            <input
+                type="number"
+                id="graduation_year"
+                name="graduation_year"
+                value="{{ form_data.graduation_year }}"
+            >
+        </p>
+
+        <!-- Multi-line comments area -->
+        <p>
+            <label for="comments">Comments:</label>
+        </p>
+
+        <p>
+            <textarea
+                id="comments"
+                name="comments"
+                rows="5"
+                cols="40"
+            >{{ form_data.comments }}</textarea>
+        </p>
+
+        <!-- Submits the form -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Student Registration Summary</title>
+</head>
+
+<body>
+    <h1>Student Registration Summary</h1>
+
+    <!-- Displays the submitted student information -->
+    <p>
+        <strong>Student Name:</strong>
+        {{ student.name }}
+    </p>
+
+    <p>
+        <strong>Student ID:</strong>
+        {{ student.student_id }}
+    </p>
+
+    <p>
+        <strong>Major:</strong>
+        {{ student.major }}
+    </p>
+
+    <p>
+        <strong>Class Standing:</strong>
+        {{ student.class_standing }}
+    </p>
+
+    <p>
+        <strong>Programming Languages:</strong>
+
+        <!-- Displays each selected programming language -->
+        {% for language in student.languages %}
+            {{ language }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            None selected
+        {% endfor %}
+    </p>
+
+    <p>
+        <strong>Expected Graduation:</strong>
+        {{ student.graduation_year }}
+    </p>
+
+    <p>
+        <strong>Comments:</strong>
+
+        <!-- Displays a default message if no comments were entered -->
+        {% if student.comments %}
+            {{ student.comments }}
+        {% else %}
+            No comments provided.
+        {% endif %}
+    </p>
+
+    <!-- Returns the user to the original form -->
+    <p>
+        <a href="{% url 'student_form' %}">
+            Enter Another Student
+        </a>
+    </p>
+</body>
+</html>
